@@ -1,0 +1,23 @@
+{
+  "name": "dropbox-backend",
+  "version": "1.0.0",
+  "description": "NodeJS server for dropbox interaction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Franz Spiess",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "dropbox": "^4.0.17",
+    "ext-to-regex": "^0.1.0",
+    "formidable": "^1.2.1",
+    "isomorphic-fetch": "^2.2.1",
+    "kcors": "^2.2.2",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>DropBox Copy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+  <nav id="vue2" class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">DropBox Copier</a>
+    <h5 v-if="loggedIn">Logged In</h1>
+    <div v-else class="input-group mb-3 login-bar col-lg-4 col-sm-12">
+        <input v-model="user.name" placeholder="username" type="text" class="form-control"></input>
+        <input v-model="user.password" placeholder="password" type="password" class="form-control"></input>
+        <button type="button" class="btn btn-primary" v-on:click="logUserIn">LOGIN</button>
+      </div>
+  </nav>
+
+  <div id="vue1" class="container-fluid col-lg-6 col-sm-12">
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Dropbox_logo_%282013%29.svg" class="img-fluid"
+      alt="Responsive image">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">File Type</span>
+      </div>
+      <select v-model="post.selectedFile" class="custom-select" id="inputGroupSelect01">
+        <option v-for="option in fileTypes" v-bind:value="option.code">
+          {{ option.name}}
+        </option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Delete After Copy ?</span>
+      </div>
+      <select v-model="post.toRemove" class="custom-select" id="inputGroupSelect01">
+        <option v-for="option in toRemove" v-bind:value="String(option)">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Origin Folder</span>
+      </div>
+      <input v-model="post.from" placeholder="origin folder" type="text" class="form-control"></input>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Target Folder</span>
+      </div>
+      <input v-model="post.to" placeholder="target folder" type="text" class="form-control"></input>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Max file size in MB</span>
+      </div>
+      <input v-model="post.max" placeholder="file size in mb" type="text" class="form-control"></input>
+    </div>
+    <button type="button" class="btn btn-primary copy" v-on:click="copyFiles">COPY</button>
+  </div>
+
+
+  <script src="index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<v-select :items="fileTypes" label="name" item-value="code" item-text="name" single-line bottom></v-select>
